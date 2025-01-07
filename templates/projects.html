@@ -4,7 +4,8 @@
 <!-- Встроенные стили -->
 <style>
     body {
-      font-family: 'Montserrat', sans-serif;
+      /* font-family: 'Montserrat', sans-serif; */
+      /* font-family: 'Inter', sans-serif; */
       background-color: #f9f9f9;
       color: #333;
     }
@@ -66,6 +67,29 @@
     .hidden {
       display: none;
     }
+
+    .github-btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 16px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #ffffff;
+        background-color: #333;
+        border: none;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+    .github-btn:hover {
+        background-color: #24292e; /* Darker GitHub color */
+        text-decoration: none;
+    }
+
+    .github-btn i {
+        margin-right: 8px;
+    }
 </style>
 
 <!-- Хэдер -->
@@ -92,22 +116,34 @@
       <!-- Project 1 -->
       <div class="col-md-12 project-card" data-category="project1">
         <h4 class="project-title text-primary">Website built on Flask</h4>
-        <p class="project-description">AI-powered analytics platform designed to streamline enterprise decision-making processes through data-driven insights and automation tools. It helps businesses analyze trends, forecast outcomes, and improve performance using advanced machine learning algorithms.</p>
+        <p class="project-description">A personal portfolio website built with Flask, showcasing my projects, skills, and experience. The site features a responsive design using HTML, CSS, Bootstrap, and Jinja templates. It includes sections for displaying project details, an interactive API dashboard, and user authentication with secure login and registration systems. The backend is powered by Flask and SQLAlchemy, ensuring scalability and flexibility for future enhancements.</p>
+        <a href="https://github.com/mikeMolchan/MyWebsite" target="_blank" class="github-btn">
+          <i class="bi bi-github"></i> View on GitHub
+        </a>
       </div>
       <!-- Project 2 -->
       <div class="col-md-12 project-card" data-category="project2">
         <h4 class="project-title text-primary">Data analysis of 8000+ users table with Pandas and NumPy</h4>
-        <p class="project-description">Marketing automation platform that leverages AI to personalize campaigns, improve customer retention, and boost sales. This tool integrates with CRM systems, social media platforms, and email marketing services to provide seamless automation and analytics.</p>
+        <p class="project-description">A marketing analytics tool leveraging AI to personalize campaigns, enhance customer retention, and increase sales. It seamlessly integrates with CRM systems, social media platforms, and email marketing tools to deliver data-driven insights and recommendations..</p>
+        <a href="https://github.com/mikeMolchan/MyWebsite" target="_blank" class="github-btn">
+          <i class="bi bi-github"></i> View on GitHub
+        </a>
       </div>
       <!-- Project 3 -->
       <div class="col-md-12 project-card" data-category="project3">
         <h4 class="project-title text-primary">AI model pretrained on large amounts of data built on PyTorch and SeaBorn</h4>
-        <p class="project-description">A mobile-first web application designed to deliver a seamless and responsive user experience. It is optimized for performance across all devices, ensuring smooth navigation, faster load times, and interactive design elements to increase user engagement.</p>
+        <p class="project-description">A scalable AI model developed for advanced data processing and prediction tasks. Built with PyTorch and Seaborn, it provides high-performance analytics, supports large datasets, and visualizes patterns for better business decisions.</p>
+        <a href="https://github.com/mikeMolchan/MyWebsite" target="_blank" class="github-btn">
+          <i class="bi bi-github"></i> View on GitHub
+        </a>
       </div>
       <!-- Project 4 -->
       <div class="col-md-12 project-card" data-category="project4">
         <h4 class="project-title text-primary">Mobile application for IOS made on XCode</h4>
-        <p class="project-description">A mobile-first web application designed to deliver a seamless and responsive user experience. It is optimized for performance across all devices, ensuring smooth navigation, faster load times, and interactive design elements to increase user engagement.</p>
+        <p class="project-description">A mobile-first application designed for iOS, offering a seamless and responsive user experience. Built with XCode, it features optimized performance, fast load times, and an intuitive design to enhance user engagement and satisfaction.</p>
+        <a href="https://github.com/mikeMolchan/MyWebsite" target="_blank" class="github-btn">
+          <i class="bi bi-github"></i> View on GitHub
+        </a>
       </div>
     </div>
   </div>

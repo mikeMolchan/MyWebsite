@@ -35,14 +35,16 @@
 
 <!-- Hero Section -->
 {% if login %}
-  <div class="alert alert-success my-0" role="alert">
-    Welcome back!
-  </div>
+<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
+  Welcome back!
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 {% endif %}
 {% if create_account %}
-  <div class="alert alert-success my-0" role="alert">
-    You've successfully created your account!
-  </div>
+<div class="alert alert-success alert-dismissible fade show my-0" role="alert">
+  You've successfully created your account!
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 {% endif %}
 <section id="hero" class="min-vh-100 d-flex align-items-center text-center text-white bg-primary fade-in">
   <div class="container">
@@ -58,7 +60,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8 text-center">
         <h2>About Me</h2>
-        <p>My name is Mike. I am a web developer specializing in modern frameworks and responsive design. I enjoy creating interactive and user-friendly websites that solve real-world problems.</p>
+        <p>My name is Mike. I'm a Python developer specializing in Data Science, Web Development and Machine Learning(Artificial Intelligence). I focus on performance, usability, and scalability, always learning and adapting to new technologies to create innovative solutions.</p>
       </div>
     </div>
   </div>

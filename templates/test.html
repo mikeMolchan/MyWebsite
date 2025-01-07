@@ -1,138 +1,201 @@
-{% extends 'layout.html' %}
-
-{% block content %}
-<!-- Встроенные стили -->
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Squid Game - Выживи или умри</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    /* Основные стили */
     body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
+      font-family: 'Arial', sans-serif;
+      background-color: #111;
+      color: white;
     }
 
-    .header-section {
-      background: linear-gradient(135deg, #6c63ff, #8a85ff);
-      padding: 60px 0;
-      text-align: center;
-      color: #fff;
+    /* Sidebar */
+    .sidebar {
+      height: 100vh;
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #a11723; /* Розовый как в костюмах охранников */
+      padding-top: 20px;
+      z-index: 1000;
     }
 
-    /* Кнопки проектов */
-    .project-buttons button {
-      margin: 5px;
-      padding: 10px 20px;
-      border-radius: 20px;
-      border: 1px solid #666;
-      background: transparent;
-      color: #333;
-      transition: all 0.3s;
+    .sidebar a {
+      padding: 15px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
     }
 
-    .project-buttons button:hover,
-    .project-buttons button.active {
-      background-color: #6c63ff;
-      color: #fff;
+    .sidebar a:hover {
+      background-color: #0f5132; /* Зелёный акцент */
     }
 
-    /* Карточки проектов */
-    .project-card {
-      background: #fff;
-      border: 1px solid #ddd;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Основной контент */
+    .content {
+      margin-left: 250px; /* Отступ для боковой панели */
+    }
+
+    /* Главный баннер */
+    .hero-section {
+      height: 100vh;
+      background: url('https://source.unsplash.com/1600x900/?squid-game') no-repeat center center/cover;
+      position: relative;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-section h1 {
+      font-size: 4rem;
+      color: #0f5132; /* Зелёный акцент */
+    }
+
+    .hero-section p {
+      font-size: 1.5rem;
+    }
+
+    /* Карточки */
+    .card {
+      background-color: #222;
+      color: white;
+      border: 2px solid #0f5132; /* Зелёный акцент */
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    .card:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(15, 81, 50, 0.6);
     }
 
-    .project-card img {
-      width: 100%;
-      border-radius: 10px;
+    .card img {
+      height: 200px;
+      object-fit: cover;
     }
 
-    .project-card h5 {
-      margin-top: 15px;
-      font-weight: bold;
+    .card-title {
+      color: #0f5132;
     }
 
-    .project-card p {
-      color: #555;
+    /* О нас */
+    .about-section {
+      background: #a11723;
+      padding: 50px 20px;
+    }
+
+    .about-section h2 {
+      color: #f1c40f;
+    }
+
+    .about-section p {
+      font-size: 1.2rem;
+    }
+
+    /* Подвал */
+    footer {
+      background-color: #111;
+      padding: 15px;
+      text-align: center;
+      color: #888;
     }
   </style>
-
-  <!-- Хэдер -->
-  <section class="header-section">
-    <div class="container">
-      <h1>Projects</h1>
-      <p>Explore our work and see how we help businesses grow with strategic solutions.</p>
-    </div>
-  </section>
-
-  <!-- Кнопки проектов -->
-  <div class="text-center project-buttons my-4">
-    <button class="filter-btn active" data-category="all">All Projects</button>
-    <button class="filter-btn" data-category="project-1">Project 1</button>
-    <button class="filter-btn" data-category="project-2">Project 2</button>
-    <button class="filter-btn" data-category="project-3">Project 3</button>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h3 class="text-center text-light mb-4">Меню</h3>
+    <a href="#hero">Главная</a>
+    <a href="#games">Игры</a>
+    <a href="#about">О нас</a>
+    <a href="#contact">Контакты</a>
   </div>
 
-  <!-- Секция проектов -->
-  <section id="portfolio" class="py-5">
-    <div class="container">
-      <div class="row g-4" id="project-container">
-        <!-- Проект 1 -->
-        <div class="col-md-4 project-card" data-category="project-1">
-          <img src="static/images/project1.jpg" alt="Project 1">
-          <h5>Project One</h5>
-          <p>AI-powered analytics platform that optimizes decision-making processes in enterprises.</p>
+  <!-- Контент -->
+  <div class="content">
+    <!-- Главный баннер -->
+    <section id="hero" class="hero-section d-flex align-items-center justify-content-center text-center">
+      <div class="hero-content">
+        <h1>Выживи или умри</h1>
+        <p>Готовы ли вы принять вызов?</p>
+        <a href="#games" class="btn btn-success btn-lg mt-3">Принять участие</a>
+      </div>
+    </section>
+
+    <!-- Секция игр -->
+    <section id="games" class="container py-5">
+      <h2 class="text-center mb-4">Игры</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://source.unsplash.com/400x300/?game" class="card-img-top" alt="Game 1" />
+            <div class="card-body">
+              <h5 class="card-title">Красный свет, зелёный свет</h5>
+              <p class="card-text">Убегайте, пока не поздно.</p>
+              <a href="#" class="btn btn-success">Подробнее</a>
+            </div>
+          </div>
         </div>
-        <!-- Проект 2 -->
-        <div class="col-md-4 project-card" data-category="project-2">
-          <img src="static/images/project2.jpg" alt="Project 2">
-          <h5>Project Two</h5>
-          <p>Marketing automation tool designed to increase customer engagement through tailored campaigns.</p>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://source.unsplash.com/400x300/?rope" class="card-img-top" alt="Game 2" />
+            <div class="card-body">
+              <h5 class="card-title">Перетягивание каната</h5>
+              <p class="card-text">Сила — ваш единственный союзник.</p>
+              <a href="#" class="btn btn-success">Подробнее</a>
+            </div>
+          </div>
         </div>
-        <!-- Проект 3 -->
-        <div class="col-md-4 project-card" data-category="project-3">
-          <img src="static/images/project3.jpg" alt="Project 3">
-          <h5>Project Three</h5>
-          <p>A mobile-first web application focused on enhancing user experience with responsive design.</p>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://source.unsplash.com/400x300/?bridge" class="card-img-top" alt="Game 3" />
+            <div class="card-body">
+              <h5 class="card-title">Стеклянный мост</h5>
+              <p class="card-text">Будьте осторожны с каждым шагом.</p>
+              <a href="#" class="btn btn-success">Подробнее</a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-{% endblock %}
+    <!-- О нас -->
+    <section id="about" class="about-section text-center">
+      <h2>О нас</h2>
+      <p>Мы организуем испытания для самых смелых участников. Докажите свою стойкость и заберите главный приз.</p>
+    </section>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Подвал -->
+    <footer>
+      <p>&copy; 2025 Squid Game. Все права защищены.</p>
+    </footer>
+  </div>
 
-  <!-- Фильтрация проектов -->
+  <!-- Скрипты -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    const buttons = document.querySelectorAll('.filter-btn');
-    const projects = document.querySelectorAll('.project-card');
-
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        const category = button.getAttribute('data-category');
-
-        // Удаляем активный класс у всех кнопок
-        buttons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        // Фильтруем проекты
-        projects.forEach(project => {
-          const projectCategory = project.getAttribute('data-category');
-          if (category === 'all' || category === projectCategory) {
-            project.style.display = 'block';
-          } else {
-            project.style.display = 'none';
-          }
-        });
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        alert('Вы выбрали игру! Удачи!');
       });
     });
   </script>
-
+</body>
+</html>

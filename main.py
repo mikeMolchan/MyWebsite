@@ -100,9 +100,9 @@ def home():
 def projects():
     return render_template('projects.html')
 
-# @app.route('/test')
-# def test():
-#     return render_template('test.html')
+@app.route('/test')
+def test():
+    return render_template('test.html')
 
 
 # --- Login page funcs ---
@@ -181,4 +181,3 @@ def download():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
