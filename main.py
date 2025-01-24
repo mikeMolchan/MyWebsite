@@ -9,13 +9,14 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String
 
 from random import randint
+import os
+
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = Flask(__name__)
-app.secret_key = "any-string-you-want-just-keep-it-secret"
-# !If not exists !
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///website.db"
+app.secret_key = os.getenv('SECRET_KEY')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
 
 
 # Creates a basic class
@@ -180,4 +181,4 @@ def download():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)

@@ -8,3 +8,4 @@ xlsx
 csv
 secrets.txt
 instance
+*.db
